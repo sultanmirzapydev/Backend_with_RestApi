@@ -1,0 +1,15 @@
+### django project setup
+
+	py -m venv  myvenv
+	pip install django
+
+	django-admin startproject myproject
+	django startapp  myapp
+
+## django user
+
+	django.contrib.auth.models import User
+	User.objects.create_user(username='username', password='password')
+	User.objects.create_superuser(username='username', password='password')
+
+	

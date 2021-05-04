@@ -12,4 +12,10 @@
 	User.objects.create_user(username='username', password='password')
 	User.objects.create_superuser(username='username', password='password')
 
+## git setup
+
+	git config --global user.name "John Doe"
+	git config --global user.email johndoe@example.com
+	git config user.name
+	git config user.email
 	

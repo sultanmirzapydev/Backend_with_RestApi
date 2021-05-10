@@ -6,6 +6,10 @@ from .serializers import ImageSerializer, ImgSearchSerializer
 from .models import Image
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import api_view
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+import requests 
+from bs4 import BeautifulSoup as bs4
 
 class ImageListAPIView(generics.ListCreateAPIView):
 	queryset = Image.objects.all()
@@ -13,33 +17,47 @@ class ImageListAPIView(generics.ListCreateAPIView):
 	permission_classes = [IsAdminUser]
 
 
-class ImgSearch(APIView):
+class ImgGet(APIView):
 	serializer_class = ImgSearchSerializer
 
 	def get(self, request):
-		queryset = Image.objects.all()
+		queryset = Image.objects.filter(title = 'dog')
 		serializer = ImgSearchSerializer(queryset, many=True)
 		return Response({'msg':'hello','data': serializer.data})
 
 	def post(self, request, *args, **kwargs):
-		if request.data.get('title') != '':
-			serializer = ImgSearchSerializer(data=request.data)
-			print(serializer)
-			if serializer.is_valid():
-				serializer.save()
-				return Response({
-                'success': True,
-                'message': 'APIView: post request fulfilled',
-                'data': request.data
-            })
-		
+		print(request.data)
+		print(request)
+		titles = request.data['title']
+		print(titles)
+		img = Image.objects.filter(title = titles)
+		print(img)
+		serializer = ImgSearchSerializer(img, many=True)
+		return Response({'data': serializer.data})
+
+
+class ImageSearch(generics.ListAPIView):
+	queryset = Image.objects.all()
+	serializer_class = ImgSearchSerializer
+	filter_backends = [filters.SearchFilter]
+	search_fields  = ['title']
+
 
 # @api_view(['GET', 'POST'])
-
-# def imgsearch(request):
-	
-# 	if request.method == 'POST':
-# 		return Response({"message": "Got some data!", "data": request.data})
+# def show(request):
 # 	if request.method == 'GET':
-# 		return Response({'msg':'success'})
+# 		URL = f'https://unsplash.com/s/photos/dog'
+# 		page = requests.get(URL)
+
+
+# 		soup = bs4(page.content, 'html5lib')
+	
+# 		img = soup.find_all('img', class_='_2UpQX')[:24]
+# 		print((img[:1]))
+# 		b = []
+# 		for item in img:
+# 			a = item['srcset']
+# 			b.append(a)
+# 		print((b[:1]))
+# 		return Response({'data':b})
 

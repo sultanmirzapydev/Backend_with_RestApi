@@ -17,20 +17,24 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from users.views import UserViewSet
-from images.views import ImageListAPIView, ImgSearch
+from images.views import ImageListAPIView, ImageSearch, ImgGet
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-#router.register(f'img', ImgSearch)
-#router.register(r'is', imgsearch)
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
-    path('img/', ImageListAPIView.as_view()),
-    path('i/', ImgSearch.as_view())    
+    path('api/album', ImgGet.as_view()),
+    path('api/searchimg', ImageSearch.as_view()),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     
     ]

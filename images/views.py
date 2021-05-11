@@ -23,7 +23,7 @@ class ImgGet(APIView):
 	def get(self, request):
 		queryset = Image.objects.filter(title = 'dog')
 		serializer = ImgSearchSerializer(queryset, many=True)
-		return Response({'msg':'hello','data': serializer.data})
+		return Response(serializer.data)
 
 	def post(self, request, *args, **kwargs):
 		print(request.data)

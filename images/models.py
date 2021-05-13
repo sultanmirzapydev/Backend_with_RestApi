@@ -21,7 +21,7 @@ class Image(models.Model):
 	img_link17 = models.CharField(max_length=300)
 	img_link18 = models.CharField(max_length=300)
 	img_link19 = models.CharField(max_length=300)
-	img_link29 = models.CharField(max_length=300)
+	img_link20 = models.CharField(max_length=300)
 	added_date = models.DateTimeField(auto_now_add=True)
    
 	def __str__(self):

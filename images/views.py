@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
-from .serializers import ImageSerializer, ImgSearchSerializer
+from .serializers import ImageSerializer, ImgSearchSerializer,PhotographerSerializer
 from .models import Image
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import api_view
@@ -41,6 +41,22 @@ class ImageSearch(generics.ListAPIView):
 	serializer_class = ImgSearchSerializer
 	filter_backends = [filters.SearchFilter]
 	search_fields  = ['title']
+
+class PhotographerPic(APIView):
+	##serializer_class = PhotographerSerializer
+	def post(self, request, *args, **kwargs):
+		data = request.data
+		
+		#print(data['picId']['id'], data['picId']['picurl'])
+		URL = data['picId']['picurl']
+		page = requests.get(URL)
+
+		soup = bs4(page.content, 'html5lib')
+		print(soup.prettify())
+		imgurl = soup.find_all('img')
+		print(imgurl)
+
+		return Response({'msg': 'lets go'})
 
 
 # @api_view(['GET', 'POST'])

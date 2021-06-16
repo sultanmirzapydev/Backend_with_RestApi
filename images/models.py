@@ -26,3 +26,19 @@ class Image(models.Model):
    
 	def __str__(self):
 		return self.title
+
+class Category(models.Model):
+	name = models.CharField(max_length=20)
+
+	def __str__(self):
+		return self.name
+
+
+class PuppyNames(models.Model):
+	owner = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, null=True)
+	name = models.CharField(max_length=20)
+
+	def Howmany(self, PuppyNames):
+		print(PuppyNames.objects.count())
+	def __str__(self):
+		return self.name

@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
 from users.views import UserViewSet
-from images.views import ImageListAPIView, ImageSearch, ImgGet,PhotographerPic
+from images.views import ImageListAPIView, ImageSearch, ImgGet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,

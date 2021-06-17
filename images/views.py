@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 import requests 
-from bs4 import BeautifulSoup as bs4
+#from bs4 import BeautifulSoup as bs4
 
 class ImageListAPIView(generics.ListCreateAPIView):
 	queryset = Image.objects.all()
@@ -42,21 +42,21 @@ class ImageSearch(generics.ListAPIView):
 	filter_backends = [filters.SearchFilter]
 	search_fields  = ['title']
 
-class PhotographerPic(APIView):
-	##serializer_class = PhotographerSerializer
-	def post(self, request, *args, **kwargs):
-		data = request.data
+# class PhotographerPic(APIView):
+# 	##serializer_class = PhotographerSerializer
+# 	def post(self, request, *args, **kwargs):
+# 		data = request.data
 		
-		#print(data['picId']['id'], data['picId']['picurl'])
-		URL = data['picId']['picurl']
-		page = requests.get(URL)
+# 		#print(data['picId']['id'], data['picId']['picurl'])
+# 		URL = data['picId']['picurl']
+# 		page = requests.get(URL)
 
-		soup = bs4(page.content, 'html5lib')
-		print(soup.prettify())
-		imgurl = soup.find_all('img')
-		print(imgurl)
+# 		soup = bs4(page.content, 'html5lib')
+# 		print(soup.prettify())
+# 		imgurl = soup.find_all('img')
+# 		print(imgurl)
 
-		return Response({'msg': 'lets go'})
+# 		return Response({'msg': 'lets go'})
 
 
 # @api_view(['GET', 'POST'])

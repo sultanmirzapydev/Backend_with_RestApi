@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework import routers
 from users.views import UserViewSet
 from images.views import ImageListAPIView, ImageSearch, ImgGet,PhotographerPic
@@ -37,4 +39,4 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'), 
     path('api/getpro/' , PhotographerPic.as_view(), name='get_pro') 
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     # own app
 
     'users',
-    'corsheaders',
+    
     'rest_framework',
     'images',
     'django_filters',

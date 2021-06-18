@@ -43,10 +43,10 @@ INSTALLED_APPS = [
 
     'users',
     
-    #'rest_framework',
+    'rest_framework',
     'images',
-    #'django_filters',
-    #'rest_framework_simplejwt.token_blacklist',
+    'django_filters',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [

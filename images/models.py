@@ -15,7 +15,7 @@ class Animal(models.Model):
 	count = models.IntegerField()
 	likedCount = models.IntegerField()
 	isLiked = models.BooleanField(False)
-	price = models.IntegerField()
+	price = models.DecimalField(decimal_places=2)
 	offers = models.DecimalField(max_digits=4, decimal_places=2)
 	vendorName = models.CharField(max_length=20)
 

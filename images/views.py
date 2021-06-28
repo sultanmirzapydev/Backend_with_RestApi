@@ -2,45 +2,57 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
-from .serializers import ImageSerializer, ImgSearchSerializer,PhotographerSerializer
-from .models import Image
+
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import api_view
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 import requests 
-#from bs4 import BeautifulSoup as bs4
-
-class ImageListAPIView(generics.ListCreateAPIView):
-	queryset = Image.objects.all()
-	serializer_class = ImageSerializer
-	permission_classes = [IsAdminUser]
+# from bs4 import BeautifulSoup as bs4
 
 
-class ImgGet(APIView):
-	serializer_class = ImgSearchSerializer
-
-	def get(self, request):
-		queryset = Image.objects.filter(title = 'dog')
-		serializer = ImgSearchSerializer(queryset, many=True)
-		return Response(serializer.data)
-
-	def post(self, request, *args, **kwargs):
-		print(request.data)
-		print(request)
-		titles = request.data['title']
-		print(titles)
-		img = Image.objects.filter(title = titles)
-		print(img)
-		serializer = ImgSearchSerializer(img, many=True)
-		return Response({'data': serializer.data})
 
 
-class ImageSearch(generics.ListAPIView):
-	queryset = Image.objects.all()
-	serializer_class = ImgSearchSerializer
-	filter_backends = [filters.SearchFilter]
-	search_fields  = ['title']
+
+
+
+
+
+
+
+
+
+
+# class ImageListAPIView(generics.ListCreateAPIView):
+# 	queryset = Image.objects.all()
+# 	serializer_class = ImageSerializer
+# 	permission_classes = [IsAdminUser]
+
+
+# class ImgGet(APIView):
+# 	serializer_class = ImgSearchSerializer
+
+# 	def get(self, request):
+# 		queryset = Image.objects.filter(title = 'dog')
+# 		serializer = ImgSearchSerializer(queryset, many=True)
+# 		return Response(serializer.data)
+
+# 	def post(self, request, *args, **kwargs):
+# 		print(request.data)
+# 		print(request)
+# 		titles = request.data['title']
+# 		print(titles)
+# 		img = Image.objects.filter(title = titles)
+# 		print(img)
+# 		serializer = ImgSearchSerializer(img, many=True)
+# 		return Response({'data': serializer.data})
+
+
+# class ImageSearch(generics.ListAPIView):
+# 	queryset = Image.objects.all()
+# 	serializer_class = ImgSearchSerializer
+# 	filter_backends = [filters.SearchFilter]
+# 	search_fields  = ['title']
 
 # class PhotographerPic(APIView):
 # 	##serializer_class = PhotographerSerializer

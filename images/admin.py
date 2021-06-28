@@ -6,6 +6,11 @@ from .models import TypeOf, Animal
 class AnimalAdmin(admin.TabularInline):
 	model = Animal
 
+class AnimalAdminDab( admin.ModelAdmin):
+	model = Animal
+
+admin.site.register(Animal,AnimalAdminDab)
+
 class TypeOfAdmin(admin.ModelAdmin):
 	inlines=[AnimalAdmin]
 

@@ -5,7 +5,7 @@ class TypeOf(models.Model):
 	animalType = models.CharField(max_length=10)
 
 	def __str__(self):
-		return self.breedName
+		return self.animalType
 
 class Animal(models.Model):
 	typeOf = models.ForeignKey(TypeOf, on_delete=models.CASCADE)

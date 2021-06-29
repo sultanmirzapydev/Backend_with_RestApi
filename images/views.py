@@ -2,18 +2,17 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
-
+from .serializers import AnimalSerializer, TypeOfSerializer
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import api_view
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 import requests 
-# from bs4 import BeautifulSoup as bs4
 
 
 
 
-
+class 
 
 
 

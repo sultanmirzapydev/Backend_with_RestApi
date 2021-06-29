@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TypeOf, Animal, vendorName
+from .models import TypweOf, Animals, vendorName
 
 
 class vendorNameAdmin(admin.ModelAdmin):
@@ -8,16 +8,16 @@ class vendorNameAdmin(admin.ModelAdmin):
 admin.site.register(vendorName, vendorNameAdmin )
 
 class AnimalAdmin(admin.TabularInline):
-	model = Animal
+	model = Animals
 
 class AnimalAdminDab( admin.ModelAdmin):
-	model = Animal
+	model = Animals
 
-admin.site.register(Animal,AnimalAdminDab)
+admin.site.register(Animals,AnimalAdminDab)
 
 class TypeOfAdmin(admin.ModelAdmin):
 	inlines=[AnimalAdmin]
 
-	list_display = ['animalType']
+	list_display = ['animalsType']
 
-admin.site.register(TypeOf, TypeOfAdmin)
+admin.site.register(TypweOf, TypeOfAdmin)

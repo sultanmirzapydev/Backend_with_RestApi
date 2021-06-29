@@ -91,6 +91,21 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'employdb',
+#         'USER': 'root',
+#         'PASSWORD':'6976',
+#         'HOST':'localhost',
+#         'PORT':''
+#     }
+# }
+
+
+
 # mysql -uroot -p
 
 # Password validation

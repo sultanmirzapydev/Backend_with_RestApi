@@ -1,8 +1,8 @@
 from django.db import models
 
 
-class TypweOf(models.Model):
-        animalsType = models.CharField(max_length=10)
+class TypeOf(models.Model):
+        animalType = models.CharField(max_length=10)
 
         def __str__(self):
                 return self.animalType
@@ -13,8 +13,8 @@ class vendorName(models.Model):
         def __str__(self):
                 return self.name
 
-class Animals(models.Model):
-        typesOf = models.ForeignKey(TypweOf, on_delete=models.CASCADE)
+class Animal(models.Model):
+        typeOf = models.ForeignKey(TypeOf, on_delete=models.CASCADE)
         nameOfVendor = models.ForeignKey(vendorName, on_delete=models.CASCADE)
         name = models.CharField(max_length=20) 
         imgUrl = models.TextField()

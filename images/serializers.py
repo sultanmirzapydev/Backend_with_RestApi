@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import TypweOf, Animal
+from models import TypeOf, Animal
 
 
 class  PhotographerSerializer(serializers.Serializer):
@@ -16,5 +16,5 @@ class TypeOfSerializer(serializers.ModelSerializer):
 	animal = AnimalSerializer(many=True)
 
 	class Meta:
-		model = TypweOf
+		model = TypeOf
 		fields = ['__all__']

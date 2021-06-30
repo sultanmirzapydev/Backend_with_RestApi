@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import TypeOf, Animal, vendorName
 
-
-
 class vendorNameAdmin(admin.ModelAdmin):
 	model = vendorName
 

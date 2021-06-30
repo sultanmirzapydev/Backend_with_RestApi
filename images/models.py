@@ -13,10 +13,10 @@ class vendorName(models.Model):
         def __str__(self):
                 return self.name
 
+
 class Animal(models.Model):
         typeOf = models.ForeignKey(TypeOf, on_delete=models.CASCADE)
         nameOfVendor = models.ForeignKey(vendorName, on_delete=models.CASCADE)
-
         name = models.CharField(max_length=20) 
         imgUrl = models.TextField()
         count = models.IntegerField()

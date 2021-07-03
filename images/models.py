@@ -9,21 +9,24 @@ class TypeOf(models.Model):
 
 class vendorName(models.Model):
         name = models.CharField(max_length=15)
+        
 
         def __str__(self):
                 return self.name
 
 
 class Animal(models.Model):
-        typeOf = models.ForeignKey(TypeOf, on_delete=models.CASCADE)
-        nameOfVendor = models.ForeignKey(vendorName, on_delete=models.CASCADE)
-        name = models.CharField(max_length=20) 
-        imgUrl = models.TextField()
-        count = models.IntegerField()
-        likedCount = models.IntegerField()
-        isLiked = models.BooleanField(False)
-        price = models.DecimalField(max_digits=6, decimal_places=2)
-        offers = models.DecimalField(max_digits=4, decimal_places=2)
+        typeOf = models.ForeignKey(TypeOf, related_name='typeOf', on_delete=models.CASCADE , null=True)
+        vendor = models.ForeignKey(vendorName, related_name='vendor', on_delete=models.CASCADE, null=True)
+        name = models.CharField(max_length=20, null=True) 
+        imgUrl = models.TextField(null=True)
+        count = models.IntegerField(null=True)
+        likedCount = models.IntegerField(null=True)
+        isLiked = models.BooleanField(False, null=True)
+        price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+        offers = models.DecimalField(max_digits=4, decimal_places=2, null=True)
 
         def __str__(self):
                 return self.name
+
+

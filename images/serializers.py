@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import TypeOf, Animal
+from .models import TypeOf, Animal, vendorName
 
 
 class  PhotographerSerializer(serializers.Serializer):
@@ -7,14 +7,21 @@ class  PhotographerSerializer(serializers.Serializer):
 	url = serializers.CharField(max_length=300)
 
 
+class VendorNameSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = vendorName
+		fields = ['id','name']
+
 class AnimalSerializer(serializers.ModelSerializer):
+	# vendorss =  serializers.CharField(source='vendor',read_only=True)
+	vendor = serializers.StringRelatedField()
 	class Meta:
 		model = Animal 
-		fields = ['__all__']
+		fields =['id', 'name', 'imgUrl','count', 'likedCount','isLiked','price', 'offers', 'name', 'vendor']
 
 class TypeOfSerializer(serializers.ModelSerializer):
-	animal = AnimalSerializer(many=True)
 
+	typeOf = AnimalSerializer(many=True, read_only=True)
 	class Meta:
 		model = TypeOf
-		fields = ['__all__']
+		fields = ['animalType','typeOf']

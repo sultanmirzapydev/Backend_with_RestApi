@@ -2,7 +2,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
-from .serializers import AnimalSerializer, TypeOfSerializer
+from .models import Animal, TypeOf
+from .serializers import AnimalSerializer, TypeOfSerializer, VendorNameSerializer
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import api_view
 from django_filters.rest_framework import DjangoFilterBackend
@@ -12,13 +13,19 @@ import requests
 
 
 
-class 
+class ProductsView(APIView):
+
+	def get(self, request, *args, **kwargs):
+		qs = TypeOf.objects.get(animalType = 'cat')
+		serializer = TypeOfSerializer(qs)
+		return Response(serializer.data)
+	def post(self, request, *args, **kwargs):
+		qs = TypeOf.objects.get(animalType=request.data)
+		serializer = TypeOfSerializer(qs)
+		return Response({'data': serializer.data})
 
 
-
-
-
-
+	
 
 
 

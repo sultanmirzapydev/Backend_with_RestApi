@@ -17,7 +17,7 @@ class AnimalSerializer(serializers.ModelSerializer):
 	vendor = serializers.StringRelatedField()
 	class Meta:
 		model = Animal 
-		fields =['id', 'name', 'imgUrl','count', 'likedCount','isLiked','price', 'offers', 'name', 'vendor']
+		fields =['id', 'name', 'imgUrl','count', 'total_liked','isLiked','price', 'offers', 'name', 'vendor']
 
 class TypeOfSerializer(serializers.ModelSerializer):
 

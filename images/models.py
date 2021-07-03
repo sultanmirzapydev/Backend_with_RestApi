@@ -22,7 +22,7 @@ class Animal(models.Model):
         imgUrl = models.TextField(null=True)
         count = models.IntegerField(null=True)
         total_liked = models.IntegerField(null=True)
-        isLiked = models.BooleanField(False, null=True)
+        isLiked = models.BooleanField(default=False, null=True)
         price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
         offers = models.DecimalField(max_digits=4, decimal_places=2, null=True)
 

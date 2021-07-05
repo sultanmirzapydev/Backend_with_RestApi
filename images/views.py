@@ -16,7 +16,7 @@ import requests
 class ProductsView(APIView):
 
 	def get(self, request, *args, **kwargs):
-		qs = TypeOf.objects.get(animalType = 'cat')
+		qs = TypeOf.objects.get(animalType = 'puppies')
 		serializer = TypeOfSerializer(qs)
 		return Response(serializer.data)
 	def post(self, request, *args, **kwargs):

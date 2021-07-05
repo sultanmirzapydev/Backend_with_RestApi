@@ -10,11 +10,12 @@ class  PhotographerSerializer(serializers.Serializer):
 class VendorNameSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = vendorName
-		fields = ['id','name']
+		fields = ['id','name','avatar']
 
 class AnimalSerializer(serializers.ModelSerializer):
 	# vendorss =  serializers.CharField(source='vendor',read_only=True)
-	vendor = serializers.StringRelatedField()
+	#vendor = serializers.StringRelatedField()
+	vendor = VendorNameSerializer(read_only=True)
 	class Meta:
 		model = Animal 
 		fields =['id', 'name', 'imgUrl','count', 'total_liked','isLiked','price', 'offers', 'name', 'vendor']

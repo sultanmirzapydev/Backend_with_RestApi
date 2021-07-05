@@ -12,7 +12,7 @@ class AnimalAdmin(admin.TabularInline):
 
 class AnimalAdminDab( admin.ModelAdmin):
 	model = Animal
-	list_display = ['name' , 'id']
+	list_display = ['name' , 'id','typeOf']
 
 admin.site.register(Animal,AnimalAdminDab)
 

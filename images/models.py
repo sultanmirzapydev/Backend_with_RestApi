@@ -20,7 +20,7 @@ class Animal(models.Model):
         typeOf = models.ForeignKey(TypeOf, related_name='typeOf', on_delete=models.CASCADE , null=True)
         vendor = models.ForeignKey(vendorName, related_name='vendor', on_delete=models.CASCADE, null=True)
         name = models.CharField(max_length=20, null=True) 
-       # descriptions = models.TextField(null=True)
+        descriptions = models.TextField(null=True)
         imgUrl = models.TextField(null=True)
 
         count = models.IntegerField(null=True)
